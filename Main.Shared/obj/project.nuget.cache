@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "+wvNbT9EpDiEspG1c3vMBXhQpKU/HWwNFcjb0NKaNcluhN169SUt8d46Ka6bKAGDG1YfKt9T5WONjr5YR3T5+w==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\aspnetboilerplate-blazor\\Main.Shared\\Main.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\qzwse\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\qzwse\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
