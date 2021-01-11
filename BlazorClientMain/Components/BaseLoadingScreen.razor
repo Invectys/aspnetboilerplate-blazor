@@ -1,0 +1,26 @@
+﻿
+
+@if (_state)
+{
+    <Loading></Loading>
+}
+
+@code {
+
+    [Inject] public ILoadingService LoadingService { get; set; }
+
+    private bool _state = false;
+
+    protected override void OnInitialized()
+    {
+
+        LoadingService.Changed = Changed;
+    }
+
+    private void Changed(bool state)
+    {
+        _state = state;
+        StateHasChanged();
+    }
+
+}

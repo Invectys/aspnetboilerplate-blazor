@@ -1,0 +1,41 @@
+﻿@inject IMatDialogService MatDialogService
+
+<DialogHeader Title="@Title"></DialogHeader>
+<MatDialogContent>
+
+    <div>
+        @Message
+    </div>
+    @if (_showDetails)
+    {
+        <div>
+            @Details
+        </div>
+    }
+
+
+</MatDialogContent>
+<MatDialogActions>
+    <MatButton OnClick="@(_ => CloseDialog())">Ok</MatButton>
+</MatDialogActions>
+
+@code
+{
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Message { get; set; }
+    [Parameter] public string Details { get; set; }
+
+
+
+    [CascadingParameter]
+    public MatDialogReference DialogReference { get; set; }
+
+
+    private bool _showDetails = true;
+
+
+    async Task CloseDialog()
+    {
+        DialogReference.Close("Test");
+    }
+}

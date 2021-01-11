@@ -1,0 +1,27 @@
+﻿
+
+
+<MatDialogTitle style="display: flex; align-items: center;">
+    <div style="flex: 1;padding-bottom:10px;padding-top:10px;">@Title</div>
+    <div @onclick="@(_=>Close())" style="cursor: pointer;">
+        <MatIcon Icon="@MatIconNames.Close"></MatIcon>
+    </div>
+</MatDialogTitle>
+
+
+
+
+@code
+{
+
+    [Parameter] public string Title { get; set; }
+
+    [CascadingParameter] public MatDialogReference DialogReference { get; set; }
+
+
+    async Task Close()
+    {
+        DialogReference.Close(null);
+    }
+
+}

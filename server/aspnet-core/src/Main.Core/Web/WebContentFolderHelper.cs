@@ -20,7 +20,7 @@ namespace Main.Web
             }
 
             var directoryInfo = new DirectoryInfo(coreAssemblyDirectoryPath);
-            while (!DirectoryContains(directoryInfo.FullName, "Main.sln"))
+            while (!DirectoryContains(directoryInfo.FullName, "Solution.sln"))
             {
                 if (directoryInfo.Parent == null)
                 {
@@ -30,13 +30,14 @@ namespace Main.Web
                 directoryInfo = directoryInfo.Parent;
             }
 
-            var webMvcFolder = Path.Combine(directoryInfo.FullName, "src", "Main.Web.Mvc");
+            var localPathWeb = "server/aspnet-core/src";
+            var webMvcFolder = Path.Combine(directoryInfo.FullName, localPathWeb, "Main.Web.Mvc");
             if (Directory.Exists(webMvcFolder))
             {
                 return webMvcFolder;
             }
 
-            var webHostFolder = Path.Combine(directoryInfo.FullName, "src", "Main.Web.Host");
+            var webHostFolder = Path.Combine(directoryInfo.FullName, localPathWeb, "Main.Web.Host");
             if (Directory.Exists(webHostFolder))
             {
                 return webHostFolder;

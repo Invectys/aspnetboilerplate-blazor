@@ -1,10 +1,15 @@
+<MatToastContainer />
+<MatPortalHost></MatPortalHost>
+<BaseLoadingScreen></BaseLoadingScreen>
+
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+        </AuthorizeRouteView>
     </Found>
     <NotFound>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
+            <NotFounded404></NotFounded404>
         </LayoutView>
     </NotFound>
 </Router>

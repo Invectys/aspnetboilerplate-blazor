@@ -1,0 +1,40 @@
+﻿@page "/login"
+
+
+<div class="middle abs-field bg-default">
+    <div style="max-width:800px;">
+        <EditForm Model="_login" OnValidSubmit="Submit">
+            <MatHeadline1>Sign In</MatHeadline1>
+            <MatTextField @bind-Value="@_login.UserNameOrEmailAddress" Label="User name" FullWidth="true"></MatTextField>
+            <MatTextField @bind-Value="@_login.Password" Label="Password" FullWidth="true" Type="password"></MatTextField>
+            <MatButton Raised="true">Sign in</MatButton>
+        </EditForm>
+    </div>
+</div>
+
+
+
+
+@code {
+
+    [Inject] public IAuthService Authentication { get; set; }
+    [Inject] public NavigationManager Navigation { get; set; }
+
+    private AuthenticationInput _login = new AuthenticationInput();
+
+
+    async Task Submit()
+    {
+        var output = await Authentication.Login(_login);
+        if (output.Success)
+        {
+            Navigation.NavigateTo("/", true);
+        }
+
+    }
+}
+
+
+@code {
+
+}

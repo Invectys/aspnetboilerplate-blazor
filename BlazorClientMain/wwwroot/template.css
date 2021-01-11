@@ -1,0 +1,19 @@
+﻿.middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.abs-field {
+    z-index: 5;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg-default
+{
+    background-color:whitesmoke;
+}
