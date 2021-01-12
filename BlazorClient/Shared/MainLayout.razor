@@ -1,17 +1,23 @@
 ﻿@inherits LayoutComponentBase
+@inject IAppConfiguratorService AppConfiguration 
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<MatAppBarContainer>
+    <MatAppBar Fixed="true">
+        <MatAppBarRow>
+            <MatAppBarSection Align="@MatAppBarSectionAlign.Start">
+                <MatIconButton Link="/" Icon="grade"></MatIconButton>
+                <MatAppBarTitle>@AppConfiguration.AppName</MatAppBarTitle>
+            </MatAppBarSection>
+            <MatAppBarSection Align="@MatAppBarSectionAlign.End">
+                <MatIconButton Link="/room" Icon="person"></MatIconButton>
+                <LoginDisplay></LoginDisplay>
+            </MatAppBarSection>
+        </MatAppBarRow>
+    </MatAppBar>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
-
-        <div class="content px-4">
+    <MatAppBarContent>
+        <div class="body_content">
             @Body
         </div>
-    </div>
-</div>
+    </MatAppBarContent>
+</MatAppBarContainer>

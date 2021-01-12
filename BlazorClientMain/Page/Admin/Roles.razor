@@ -1,0 +1,86 @@
+﻿@page "/admin/roles"
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Roles Page</h3>
+
+<MatButton OnClick="()=>OpenCreate()">Create</MatButton>
+
+<MatTable Items="@_list" class="mat-elevation-z5"
+          FilterByColumnName="Role name">
+    <MatTableHeader>
+        <th>Role name</th>
+        <th>Description</th>
+        <th>Granted</th>
+        <th>Actions</th>
+    </MatTableHeader>
+    <MatTableRow>
+        <td>@context.Name</td>
+        <th>@context.Description</th>
+        <td style="min-width:60vw;">
+            <MatChipSet>
+                @foreach (var perm in context.GrantedPermissions)
+                {
+                    <MatChip Label="@perm"></MatChip>
+                }
+            </MatChipSet>
+        </td>
+        <td>
+            <MatButton OnClick="()=>OpenEdit(context)">Edit</MatButton>
+            <MatButton OnClick="()=>Delete(context)">Delete</MatButton>
+        </td>
+    </MatTableRow>
+</MatTable>
+
+
+@code {
+
+
+    [Inject] public IMatDialogService DialogService { get; set; }
+    [Inject] public IBaseApi BaseApi { get; set; }
+
+    private List<RoleDto> _list = new List<RoleDto>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var output = await BaseApi.GetAllRoles();
+        if(output.Success)
+        {
+            _list = output.Result.Items;
+        }
+    }
+
+
+    async Task OpenEdit(RoleDto edit)
+    {
+        var opt = new MatDialogOptions()
+        {
+            Attributes = new Dictionary<string, object>
+        {
+                { "Edit", edit }
+            }
+
+        };
+        var result = await DialogService.OpenAsync(typeof(EditRole), opt);
+    }
+
+    async Task OpenCreate()
+    {
+        var result = await DialogService.OpenAsync(typeof(CreateRole), null);
+        if(result != null)
+        {
+            _list.Add((RoleDto)result);
+        }
+    }
+
+    async Task Delete(RoleDto role)
+    {
+        var output = await BaseApi.DeleteRole(new ApiIdInput<int>(role.Id));
+        if(output.Success)
+        {
+            _list.Remove(role);
+        }
+    }
+
+}
+

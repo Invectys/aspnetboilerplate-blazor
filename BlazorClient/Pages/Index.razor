@@ -1,5 +1,20 @@
 ﻿@page "/"
+@inject IBaseApi baseApi
 
 <h1>Hello, world!</h1>
 
+<MatButton OnClick="Test">Test</MatButton>
 
+
+@code
+{
+
+    async Task Test()
+    {
+
+        var mediator = new DataMediator<IBaseApi>(baseApi);
+        var result = await mediator.GetData<ApiOutput<ApiArray<UserDto>>>("GetAllUsers");
+
+    }
+
+}

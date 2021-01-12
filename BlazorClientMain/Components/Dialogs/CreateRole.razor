@@ -1,0 +1,50 @@
+﻿@inject IMatDialogService MatDialogService
+
+
+<EditForm Model="_create" OnValidSubmit="Create">
+    <DialogHeader Title="Create role"></DialogHeader>
+    <MatDialogContent>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div style="display:flex;flex-direction:column;">
+            <MatTextField @bind-Value="_create.Name" Label="Name"></MatTextField>
+            <MatTextField @bind-Value="_create.DisplayName" Label="Display name"></MatTextField>
+            <MatTextField @bind-Value="_create.Description" Label="Description"></MatTextField>
+            <SelectPermissions @bind-Value="_create.GrantedPermissions"></SelectPermissions>
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton Type="submit">Create</MatButton>
+    </MatDialogActions>
+</EditForm>
+
+@code
+{
+
+
+    [CascadingParameter] public MatDialogReference DialogReference { get; set; }
+
+    [Inject] public IBaseApi BaseApi { get; set; }
+
+    private CreateRoleDto _create = new CreateRoleDto();
+
+
+    protected override void OnInitialized()
+    {
+    }
+
+
+    async Task Create()
+    {
+
+
+        var output = await BaseApi.CreateRole(_create);
+        if (output != null)
+        {
+            DialogReference.Close(output);
+        }
+    }
+
+
+}
+

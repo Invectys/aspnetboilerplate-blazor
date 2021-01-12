@@ -1,0 +1,23 @@
+﻿@page "/logout"
+@attribute [Authorize]
+
+<Loading>Logout</Loading>
+
+@code {
+
+
+    [Inject] public IAuthService Authentication { get; set; }
+    [Inject] public NavigationManager Navigation { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await Authentication.Logout();
+        Navigation.NavigateTo("/");
+
+    }
+
+
+
+
+}

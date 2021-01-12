@@ -1,0 +1,46 @@
+﻿@inject IMatDialogService MatDialogService
+
+
+<EditForm Model="_create" OnValidSubmit="Create">
+    <DialogHeader Title="Create user"></DialogHeader>
+    <MatDialogContent>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div style="display:flex;flex-direction:column;">
+            <MatTextField @bind-Value="_create.UserName" Label="User Name"></MatTextField>
+            <MatTextField @bind-Value="_create.Name" Label="Name"></MatTextField>
+            <MatTextField @bind-Value="_create.Surname" Label="Surname"></MatTextField>
+            <MatTextField @bind-Value="_create.Password" Label="Password"></MatTextField>
+            <MatTextField @bind-Value="_create.EmailAddress" Label="Email"></MatTextField>
+            <SelectRoles  @bind-Value="_create.RoleNames"></SelectRoles>
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton Type="submit">Create</MatButton>
+    </MatDialogActions>
+</EditForm>
+
+@code
+{
+
+
+    [CascadingParameter] public MatDialogReference DialogReference { get; set; }
+
+    [Inject] public IBaseApi BaseApi { get; set; }
+
+    private CreateUserDto _create = new CreateUserDto();
+
+
+    async Task Create()
+    {
+        _create.IsActive = true;
+        var output = await BaseApi.CreateUser(_create);
+        if (output.Success)
+        {
+            DialogReference.Close(output.Result);
+        }
+    }
+
+
+}
+

@@ -1,0 +1,12 @@
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\bin\Debug\net5.0\ApiDataMediator.deps.json
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\bin\Debug\net5.0\ApiDataMediator.dll
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\bin\Debug\net5.0\ref\ApiDataMediator.dll
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\bin\Debug\net5.0\ApiDataMediator.pdb
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.csprojAssemblyReference.cache
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.AssemblyInfoInputs.cache
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.AssemblyInfo.cs
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.csproj.CoreCompileInputs.cache
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.dll
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ref\ApiDataMediator.dll
+D:\GitHub\aspnetboilerplate-blazor\ApiDataMediator\obj\Debug\net5.0\ApiDataMediator.pdb

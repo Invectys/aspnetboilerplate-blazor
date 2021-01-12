@@ -86,6 +86,48 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using BlazorClientMain.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using BlazorClientMain.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Api;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Models.Users;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using ApiDataMediator;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {

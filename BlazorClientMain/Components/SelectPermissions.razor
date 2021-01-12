@@ -1,0 +1,79 @@
+﻿<MatList>
+    @foreach (var perm in _rolesStates)
+    {
+        if (perm == null)
+            continue;
+
+        <MatListItem>
+            @*<MatCheckbox @bind-Value="@perm.State" Label="@perm.Permission" TValue="bool"></MatCheckbox>*@
+            <MatCheckbox Value="perm.State" ValueChanged="(v) => Changed(v,perm)" 
+                         ValueExpression="()=>perm.State" Label="@perm.Permission" TValue="bool"></MatCheckbox>
+        </MatListItem>
+    }
+</MatList>
+
+
+@code {
+
+
+    [Parameter]
+    public List<string> Value
+    {
+        get
+        {
+            return _rolesStates.Where(p => p.State == true).Select(p => p.Permission).ToList();
+        }
+        set
+        {
+            _value = value;
+        }
+    }
+
+    [Parameter] public EventCallback<List<string>> ValueChanged { get; set; }
+
+    [Inject] public IBaseApi BaseApi { get; set; }
+    [Inject] public IDataMediator DataMediator { get; set; }
+
+    private List<string> _permissonsHave = new List<string>();
+    private List<PermissionDto> _permissionsAll;
+    private EventCallback<bool> _optionsChanged;
+
+    private List<PermNote> _rolesStates = new List<PermNote>();
+    private List<string> _value;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var output = await DataMediator.GetData<ApiOutput<ApiArray<PermissionDto>>>("GetAllPermissions");
+        _permissionsAll = output.Result.Items;
+
+        _permissonsHave = _value;
+        _rolesStates.Clear();
+        foreach (var perm in _permissionsAll)
+        {
+            if (perm == null)
+                continue;
+            bool contains = _permissonsHave.Contains(perm.Name);
+            _rolesStates.Add(new PermNote()
+            {
+                Permission = perm.Name,
+                State = contains
+            });
+        }
+    }
+
+
+
+    private class PermNote
+    {
+        public string Permission { get; set; }
+        public bool State { get; set; }
+    }
+
+
+    void Changed(bool state, PermNote note)
+    {
+        note.State = state;
+        ValueChanged.InvokeAsync(_value);
+    }
+}

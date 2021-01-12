@@ -1,6 +1,9 @@
-﻿using BlazorClientMain.Services;
+﻿using ApiDataMediator;
+using BlazorClientMain.Services;
 using Blazored.LocalStorage;
 using Main.Shared.Api;
+using Main.Shared.Models.Roles;
+using Main.Shared.Models.Users;
 using MatBlazor;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -41,6 +44,7 @@ namespace BlazorClientMain
 
             builder.Services.AddSingleton(sp => client);
             builder.Services.AddSingleton(typeof(IBaseApi), sp => new BaseApi(client));
+            builder.Services.AddSingleton<IDataMediator,DataMediator<IBaseApi>>();
 
             //Authorization
             builder.Services.AddAuthorizationCore();
@@ -49,19 +53,32 @@ namespace BlazorClientMain
 
 
             //App
-            builder.Services.AddSingleton<INotificationsService, NotificationsService>();
-            builder.Services.AddSingleton<IErrorSuccesApiHandler, ErrorSuccesApiHandler>();
+            builder.Services.AddScoped<INotificationsService, NotificationsService>();
+            builder.Services.AddScoped<IErrorSuccesApiHandler, ErrorSuccesApiHandler>();
             builder.Services.AddSingleton<ILocalSaver, LocalSaver>();
             builder.Services.AddSingleton<ILoadingService, LoadingService>();
+            builder.Services.AddSingleton<IScreenDetermineService, ScreenDetermineService>();
+            builder.Services.AddSingleton<IAppConfiguratorService, AppConfiguratorService>();
+
         }
 
 
 
-        public static void Init(this WebAssemblyHost assemblyHost)
+        public static async Task Init(this WebAssemblyHost assemblyHost)
         {
             var errorHandler = assemblyHost.Services.GetRequiredService<IErrorSuccesApiHandler>();
             errorHandler.RegisterHandler();
+
+
+            
         }
+
+    }
+
+
+    //dummy
+    public class FrameworkUI
+    {
 
     }
 }

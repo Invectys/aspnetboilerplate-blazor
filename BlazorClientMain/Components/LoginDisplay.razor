@@ -1,0 +1,18 @@
+﻿<AuthorizeView Roles="Admin">
+    <Authorized>
+        <MatIconButton Link="/admin/panel" Icon="brightness_high"></MatIconButton>
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView>
+    <Authorized>
+        <MatIconButton Link="/logout" Icon="exit_to_app"></MatIconButton>
+    </Authorized>
+    <NotAuthorized>
+        <MatIconButton Link="/login" Icon="input"></MatIconButton>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}

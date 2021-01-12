@@ -22,4 +22,15 @@ namespace Main.Shared.Api
         public bool RememberClient { get; set; } = false;
     }
 
+    public class RegistrationInput
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Username { get; set; }
+        public string EmailAddress { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
+    }
+
+
 }

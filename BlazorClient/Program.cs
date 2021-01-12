@@ -20,7 +20,7 @@ namespace BlazorClient
 
             builder.BuildBlazorMainClient();
             var build = builder.Build();
-            build.Init();
+            await build.Init();
 
             await build.RunAsync();
 

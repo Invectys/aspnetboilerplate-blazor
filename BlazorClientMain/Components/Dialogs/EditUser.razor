@@ -1,0 +1,42 @@
+﻿@inject IMatDialogService MatDialogService
+
+
+<EditForm Model="Edit" OnValidSubmit="Submit">
+    <DialogHeader Title="Edit user"></DialogHeader>
+    <MatDialogContent>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div style="display:flex;flex-direction:column;">
+            <MatTextField @bind-Value="Edit.UserName" Label="User Name"></MatTextField>
+            <MatTextField @bind-Value="Edit.Name" Label="Name"></MatTextField>
+            <MatTextField @bind-Value="Edit.Surname" Label="Surname"></MatTextField>
+            <MatTextField @bind-Value="Edit.EmailAddress" Label="Password"></MatTextField>
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton Type="submit">Edit</MatButton>
+    </MatDialogActions>
+</EditForm>
+
+@code
+{
+
+
+    [CascadingParameter] public MatDialogReference DialogReference { get; set; }
+
+    [Inject] public IBaseApi baseApi { get; set; }
+
+    [Parameter] public UserDto Edit { get; set; }
+
+
+    async Task Submit()
+    {
+        var output = await baseApi.UpdateUser(Edit);
+        if (output != null)
+        {
+            DialogReference.Close(output);
+        }
+    }
+
+
+}

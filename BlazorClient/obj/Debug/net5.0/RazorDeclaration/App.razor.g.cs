@@ -89,6 +89,62 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using BlazorClientMain.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Api;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Models.Users;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using ApiDataMediator;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 1 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\App.razor"
+using BlazorClientMain;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\App.razor"
+using BlazorClientMain.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\App.razor"
+using Microsoft.AspNetCore.Components.Authorization;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -96,6 +152,7 @@ using MatBlazor;
         {
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAppConfiguratorService AppConfig { get; set; }
     }
 }
 #pragma warning restore 1591

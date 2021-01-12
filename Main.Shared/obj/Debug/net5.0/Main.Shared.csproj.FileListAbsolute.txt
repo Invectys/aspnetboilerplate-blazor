@@ -1,12 +1,12 @@
-D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.GeneratedMSBuildEditorConfig.editorconfig
-D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.AssemblyInfoInputs.cache
-D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.AssemblyInfo.cs
-D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.csproj.CoreCompileInputs.cache
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\bin\Debug\net5.0\Main.Shared.deps.json
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\bin\Debug\net5.0\Main.Shared.dll
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\bin\Debug\net5.0\ref\Main.Shared.dll
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\bin\Debug\net5.0\Main.Shared.pdb
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.csprojAssemblyReference.cache
+D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.AssemblyInfoInputs.cache
+D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.AssemblyInfo.cs
+D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.csproj.CoreCompileInputs.cache
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.dll
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\ref\Main.Shared.dll
 D:\GitHub\aspnetboilerplate-blazor\Main.Shared\obj\Debug\net5.0\Main.Shared.pdb

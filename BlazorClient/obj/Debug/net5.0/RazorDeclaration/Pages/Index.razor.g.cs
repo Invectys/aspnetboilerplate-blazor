@@ -89,6 +89,48 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using BlazorClientMain.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using BlazorClientMain.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Api;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using Main.Shared.Models.Users;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\_Imports.razor"
+using ApiDataMediator;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -97,6 +139,23 @@ using MatBlazor;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 10 "D:\GitHub\aspnetboilerplate-blazor\BlazorClient\Pages\Index.razor"
+ 
+
+    async Task Test()
+    {
+
+        var mediator = new DataMediator<IBaseApi>(baseApi);
+        var result = await mediator.GetData<ApiOutput<ApiArray<UserDto>>>("GetAllUsers");
+
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IBaseApi baseApi { get; set; }
     }
 }
 #pragma warning restore 1591

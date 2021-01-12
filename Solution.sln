@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorClient", "BlazorClien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorClientMain", "BlazorClientMain\BlazorClientMain.csproj", "{7CDCBDE9-4C4C-4A65-AAE1-89AEC5CC4E58}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDataMediator", "ApiDataMediator\ApiDataMediator.csproj", "{D2011AFF-6B49-4D27-9BCE-D4413FC7033B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{7CDCBDE9-4C4C-4A65-AAE1-89AEC5CC4E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CDCBDE9-4C4C-4A65-AAE1-89AEC5CC4E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CDCBDE9-4C4C-4A65-AAE1-89AEC5CC4E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2011AFF-6B49-4D27-9BCE-D4413FC7033B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2011AFF-6B49-4D27-9BCE-D4413FC7033B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2011AFF-6B49-4D27-9BCE-D4413FC7033B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2011AFF-6B49-4D27-9BCE-D4413FC7033B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

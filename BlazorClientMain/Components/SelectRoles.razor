@@ -1,0 +1,98 @@
+﻿<MatList>
+    @foreach (var role in _rolesStates)
+    {
+        if (role == null)
+            continue;
+
+        <MatListItem>
+            @*<MatCheckbox @bind-Value="@role.State" Label="@role.Permission" TValue="bool"></MatCheckbox>*@
+            <MatCheckbox Value="role.State" ValueChanged="(v) => Changed(v,role)" ValueExpression="()=>role.State" 
+                         Label="@role.Role" TValue="bool"></MatCheckbox>
+        </MatListItem>
+    }
+</MatList>
+
+
+
+@code {
+
+
+    [Parameter]
+    public string[] Value
+    {
+        get
+        {
+            return _rolesStates.Where(p => p.State == true).Select(p => p.Role).ToArray();
+        }
+        set
+        {
+            _value = value;
+        }
+    }
+
+    [Parameter] public EventCallback<string[]> ValueChanged { get; set; }
+
+    [Inject] public IBaseApi BaseApi { get; set; }
+    [Inject] public IDataMediator DataMediator { get; set; }
+
+    private List<string> _rolesHave = new List<string>();
+    private List<RoleDto> _rolesAll = new List<RoleDto>();
+    private EventCallback<bool> _optionsChanged;
+
+    private List<RoleNote> _rolesStates = new List<RoleNote>();
+    private string[] _value;
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var output = await DataMediator.GetData<ApiOutput<ApiArray<RoleDto>>>("GetAllRoles");
+        _rolesAll = output.Result.Items;
+
+        if (_value == null)
+        {
+            _rolesHave = new List<string>();
+        }
+        else
+        {
+            _rolesHave = _value.ToList();
+        }
+        _rolesStates.Clear();
+        foreach (var role in _rolesAll)
+        {
+            if (role == null)
+                continue;
+            bool contains = _rolesHave.Contains(role.Name);
+            _rolesStates.Add(new RoleNote()
+            {
+                Role = role.Name,
+                State = contains
+            });
+        }
+    }
+
+
+
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var output = await DataMediator.GetData<ApiOutput<ApiArray<RoleDto>>>("GetAllRoles");
+        _rolesAll = output.Result.Items;
+        await base.OnParametersSetAsync();
+    }
+
+
+    private class RoleNote
+    {
+        public string Role { get; set; }
+        public bool State { get; set; }
+    }
+
+
+    void Changed(bool state, RoleNote note)
+    {
+        note.State = state;
+        ValueChanged.InvokeAsync(Value);
+    }
+}

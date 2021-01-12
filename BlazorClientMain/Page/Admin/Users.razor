@@ -1,11 +1,82 @@
 ﻿@page "/admin/users"
+@attribute [Authorize(Roles = "Admin")]
 
-<h3>Users</h3>
+<h3>Users Page</h3>
 
 
+<MatButton OnClick="()=>OpenCreateUser()">Create</MatButton>
 
+<MatTable Items="@_list" class="mat-elevation-z5"
+          FilterByColumnName="User name">
+    <MatTableHeader>
+        <th>User name</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Last login time</th>
+        <th>Creation time</th>
+        <th>Actions</th>
+    </MatTableHeader>
+    <MatTableRow>
+        <td>@context.UserName</td>
+        <th>@context.EmailAddress</th>
+        <td>@context.Name</td>
+        <td>@context.Surname</td>
+        <td>@context.LastLoginTime.ToString()</td>
+        <td>@context.CreationTime</td>
+        <td>
+            <MatButton OnClick="()=>OpenEditUser(context)">Edit</MatButton>
+            <MatButton OnClick="()=>DeleteUser(context)">Delete</MatButton>
+        </td>
+    </MatTableRow>
+</MatTable>
 
 
 @code {
+
+
+    [Inject] public IMatDialogService DialogService { get; set; }
+    [Inject] public IBaseApi ApiBase { get; set; }
+
+    private List<UserDto> _list = new List<UserDto>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await ApiBase.GetAllUsers();
+        if(result.Success)
+        {
+            _list = result.Result.Items;
+        }
+    }
+
+
+    async Task OpenEditUser(UserDto user)
+    {
+        var opt = new MatDialogOptions()
+        {
+            Attributes = new Dictionary<string, object>
+        {
+                { "Edit",user }
+            }
+
+        };
+
+        var result = await DialogService.OpenAsync(typeof(EditUser), opt);
+    }
+
+    async Task OpenCreateUser()
+    {
+        var result = await DialogService.OpenAsync(typeof(CreateUser), null);
+    }
+
+    async Task DeleteUser(UserDto user)
+    {
+        var output = await ApiBase.DeleteUser(new ApiIdInput<long>(user.Id));
+        if(output.Success)
+        {
+            _list.Remove(user);
+        }
+    }
 
 }

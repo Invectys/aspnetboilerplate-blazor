@@ -105,21 +105,49 @@ using Main.Shared.Api;
 #nullable disable
 #nullable restore
 #line 14 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
-using BlazorClientMain.Services;
+using BlazorClientMain;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
-using BlazorClientMain.Components;
+using BlazorClientMain.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 16 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using BlazorClientMain.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
 using BlazorClientMain.Components.Dialogs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using Main.Shared.Models.Users;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using Main.Shared.Models.Roles;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 20 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using ApiDataMediator;
 
 #line default
 #line hidden

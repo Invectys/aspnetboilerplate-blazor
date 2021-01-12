@@ -1,0 +1,31 @@
+﻿@page "/room"
+
+
+<MatTabGroup>
+    <MatTab Label="User">
+        
+        <MatButton OnClick="OpenChagePassword" Label="Change password"></MatButton>
+
+    </MatTab>
+    <MatTab Label="Theme">
+        
+
+
+    </MatTab>
+    
+
+</MatTabGroup>
+
+
+
+
+@code {
+
+    [Inject] public IMatDialogService Dialog { get; set; }
+
+    async Task OpenChagePassword()
+    {
+        var output = await Dialog.OpenAsync(typeof(ChangePassword), null);
+    }
+   
+}

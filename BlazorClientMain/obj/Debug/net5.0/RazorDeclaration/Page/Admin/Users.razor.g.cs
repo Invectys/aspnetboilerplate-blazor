@@ -105,21 +105,56 @@ using Main.Shared.Api;
 #nullable disable
 #nullable restore
 #line 14 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
-using BlazorClientMain.Services;
+using BlazorClientMain;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
-using BlazorClientMain.Components;
+using BlazorClientMain.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 16 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using BlazorClientMain.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
 using BlazorClientMain.Components.Dialogs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using Main.Shared.Models.Users;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using Main.Shared.Models.Roles;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 20 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\_Imports.razor"
+using ApiDataMediator;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\Page\Admin\Users.razor"
+           [Authorize(Roles = "Admin")]
 
 #line default
 #line hidden
@@ -132,6 +167,59 @@ using BlazorClientMain.Components.Dialogs;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 35 "D:\GitHub\aspnetboilerplate-blazor\BlazorClientMain\Page\Admin\Users.razor"
+       
+
+
+    [Inject] public IMatDialogService DialogService { get; set; }
+    [Inject] public IBaseApi ApiBase { get; set; }
+
+    private List<UserDto> _list = new List<UserDto>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await ApiBase.GetAllUsers();
+        if(result.Success)
+        {
+            _list = result.Result.Items;
+        }
+    }
+
+
+    async Task OpenEditUser(UserDto user)
+    {
+        var opt = new MatDialogOptions()
+        {
+            Attributes = new Dictionary<string, object>
+        {
+                { "Edit",user }
+            }
+
+        };
+
+        var result = await DialogService.OpenAsync(typeof(EditUser), opt);
+    }
+
+    async Task OpenCreateUser()
+    {
+        var result = await DialogService.OpenAsync(typeof(CreateUser), null);
+    }
+
+    async Task DeleteUser(UserDto user)
+    {
+        var output = await ApiBase.DeleteUser(new ApiIdInput<long>(user.Id));
+        if(output.Success)
+        {
+            _list.Remove(user);
+        }
+    }
+
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

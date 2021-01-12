@@ -1,0 +1,50 @@
+﻿@inject IMatDialogService MatDialogService
+
+
+<EditForm Model="Edit" OnValidSubmit="Create">
+    <DialogHeader Title="Edit role"></DialogHeader>
+    <MatDialogContent>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div style="display:flex;flex-direction:column;">
+            <MatTextField @bind-Value="Edit.Name" Label="Name"></MatTextField>
+            <MatTextField @bind-Value="Edit.DisplayName" Label="Display name"></MatTextField>
+            <MatTextField @bind-Value="Edit.Description" Label="Description"></MatTextField>
+            <SelectPermissions @bind-Value="Edit.GrantedPermissions"></SelectPermissions>
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton Type="submit">Edit</MatButton>
+    </MatDialogActions>
+</EditForm>
+
+@code
+{
+
+
+    [CascadingParameter] public MatDialogReference DialogReference { get; set; }
+
+    [Inject] public IBaseApi BaseApi { get; set; }
+
+    [Parameter] public RoleDto Edit { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+
+
+    async Task Create()
+    {
+
+        var output = await BaseApi.UpdateRole(Edit);
+        if (output != null)
+        {
+            DialogReference.Close(output);
+        }
+    }
+
+
+}
+}

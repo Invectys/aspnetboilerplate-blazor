@@ -17,3 +17,14 @@
 {
     background-color:whitesmoke;
 }
+
+body{
+    margin-left:0px;
+}
+.body_content {
+    margin-top: 25px;
+    margin-bottom: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 90vw;
+}
